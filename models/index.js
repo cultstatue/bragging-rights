@@ -74,8 +74,16 @@ Post.hasOne(Achievements, {
   foreignKey: "achievement_id",
 });
 
+// This one is weird, make sure you dont switch Post and Achievements here, or else it will not know what your are referencing
+Post.belongsTo(Achievements, {
+  foreignKey: "achievement_id",
+});
+
 //Games and Achievement association
-Achievements.hasMany(Game, {
+Achievements.belongsTo(Game, {
+  foreignKey: "game_id",
+});
+Game.hasMany(Achievements, {
   foreignKey: "game_id",
 });
 
