@@ -55,8 +55,7 @@ async function checkGames(game) {
                 createGame(game)
 
             }
-
-            
+   
         })
 
     } else {

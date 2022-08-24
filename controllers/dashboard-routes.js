@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+// <<<<<<< HEAD
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment, Game, Achievements} = require('../models');
@@ -23,15 +23,15 @@ router.get('/', (req, res) => {
 
 
 module.exports = router;
-=======
-const router = require("express").Router();
-const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
+// =======
+// const router = require("express").Router();
+// const sequelize = require("../config/connection");
+// const { Post, User, Comment } = require("../models");
 
-router.get("/", (req, res) => {
-  console.log(req.session);
-  res.render("dashboard");
-});
+// router.get("/", (req, res) => {
+//   console.log(req.session);
+//   res.render("dashboard");
+// });
 
-module.exports = router;
->>>>>>> main
+// module.exports = router;
+// >>>>>>> main
