@@ -115,6 +115,19 @@ router.post("/login", (req, res) => {
   });
 });
 
+//Logout route
+router.post("/logout", (req, res) => {
+  //user the destroy method to clear our session
+  //Check to see if we are logged in
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 // Delete a user at specified id
 router.delete("/:id", (req, res) => {
   User.destroy({
