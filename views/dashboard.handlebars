@@ -1,1 +1,86 @@
+{{!-- <<<<<<< HEAD --}}
+<section class="m-3">
+
+  <div class="container mt-3">
+    <h1>Record a New Achievement</h1>
+    <div class="row">
+      
+      <div class="col">
+
+        <form class="new-post-form">
+        
+          <div class="mb-3">
+            
+            <label for="post-title-input" class="form-label">Achievement Name</label>
+            <input type="text" class="form-control" id="post-title-input" placeholder="Achievement">
+
+          </div>
+
+          <div class="mb-3">
+
+            <label for="game-select-input" class="form-label">Game</label>
+            <input class="form-control" list="datalistOptions" id="game-select-input" placeholder="Type to search for a game...">
+            <datalist id="datalistOptions">
+              
+              {{#if games.length}}
+                {{#each games as |game|}}
+
+                  <option value="{{game.game_title}}">
+      
+                {{/each}}
+              {{/if}}
+
+            </datalist>
+
+          </div>
+          <button type="submit" class="btn btn-primary mb-3">Claim!</button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="row">
+      <h1>Your Achievements</h1>
+      <div class="col">
+        {{#if posts.length}}
+
+          {{#each post as |post|}}
+
+            <div class="card" style="width: 18rem;">
+
+              <img src="IMG URL WILL GO HERE" class="card-img-top" alt="...">
+
+              <div class="card-body">
+
+                <h5 class="card-title">{{achievment.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{games.game_title}}</h6>
+
+                <a href="/post/{{post.id}}">{{comments.length}} comments</a>
+
+                <a href="/" class="btn btn-primary">Edit Post</a>
+                
+              </div>
+
+            </div>
+
+          {{/each}}
+
+          {{else}}
+
+          No achievements recorded yet. Too bad!
+
+        {{/if}}
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script src="/javascript/createpost.js"></script>
+{{!-- =======
 <div> Welcome to the dashboard</div>
+>>>>>>> main --}}
