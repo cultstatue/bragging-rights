@@ -21,7 +21,9 @@ async function createAchievement(achievement, game) {
     if(response.ok) {
 
         console.log("new achievement recorded!")
+
     } else {
+
         alert(response.statusText)
     }
 }
@@ -47,6 +49,7 @@ async function checkGames(game) {
             if(gameArray.includes(game)) {
 
                 console.log("no game added")
+
             } else {
 
                 createGame(game)
@@ -63,13 +66,13 @@ async function checkGames(game) {
 }
 
 // logic to create a new game
-async function createGame(game) {
+async function createGame(game_title) {
 
     const response = await fetch('/api/games', {
 
         method: 'POST',
         body: JSON.stringify({
-            game
+            game_title
         }),
         headers: {
 
