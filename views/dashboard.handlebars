@@ -1,43 +1,47 @@
 <section class="m-3">
 
   <div class="container mt-3">
-    <h1>Record a New Achievment</h1>
+    <h1>Record a New Achievement</h1>
     <div class="row">
       
       <div class="col">
+
+        <form class="new-post-form">
         
-        <div class="mb-3">
-
-          <label for="post-title-input" class="form-label">Achievment Name</label>
-          <input type="text" class="form-control" id="post-title-input" placeholder="achievement">
-
-        </div>
-
-        <div class="mb-3">
-
-          <label for="game-select-input" class="form-label">Game</label>
-          <input class="form-control" list="datalistOptions" id="game-select-input" placeholder="Type to search for a game...">
-          <datalist id="datalistOptions">
+          <div class="mb-3">
             
-            {{#if games.length}}
-              {{#each games as |game|}}
+            <label for="post-title-input" class="form-label">Achievement Name</label>
+            <input type="text" class="form-control" id="post-title-input" placeholder="Achievement">
 
-                <option value="{{game.game_title}}">
-    
-              {{/each}}
-            {{/if}}
+          </div>
 
-          </datalist>
+          <div class="mb-3">
+
+            <label for="game-select-input" class="form-label">Game</label>
+            <input class="form-control" list="datalistOptions" id="game-select-input" placeholder="Type to search for a game...">
+            <datalist id="datalistOptions">
+              
+              {{#if games.length}}
+                {{#each games as |game|}}
+
+                  <option value="{{game.game_title}}">
+      
+                {{/each}}
+              {{/if}}
+
+            </datalist>
+
+          </div>
+          <button type="submit" class="btn btn-primary mb-3">Claim!</button>
 
         </div>
-        <button type="submit" class="btn btn-primary mb-3">Claim!</button>
 
-      </div>
+      </form>
 
     </div>
 
     <div class="row">
-      <h1>Your Achievments</h1>
+      <h1>Your Achievements</h1>
       <div class="col">
         {{#if posts.length}}
 
@@ -64,7 +68,7 @@
 
           {{else}}
 
-          No achievments recorded yet. Too bad!
+          No achievements recorded yet. Too bad!
 
         {{/if}}
       </div>
@@ -73,5 +77,6 @@
 
   </div>
 
-
 </section>
+
+<script src="/javascript/createpost.js"></script>
