@@ -60,12 +60,72 @@ router.post("/", (req, res) => {
     password: req.body.password,
   })
     .then((dbUserData) => {
-      res.json(dbUserData);
+      //accessing our session information
+      req.session.save(() => {
+        //we want to find our user_id, username, and declare that we are now logged in
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        //send data
+        res.json(dbUserData);
+      });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+//Login route
+router.post("/login", (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email,
+    },
+  }).then((dbUserData) => {
+    // NOTE: We do not disclose whether the password or email is wrong to avoid safety concerns
+    //If there is no data found with this email, send error
+    if (!dbUserData) {
+      res.status(400).json({
+        message: "No account found with either your password or email",
+      });
+      return;
+    }
+
+    //check to see if the password entered is valid
+    const validPassword = dbUserData.checkPassword(req.body.password);
+
+    // if it is not valid, send error
+    if (!validPassword) {
+      res.status(400).json({
+        message: "No account found with either your password or email",
+      });
+      return;
+    }
+
+    //another req session variable declaration
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+
+      res.json({ user: dbUserData, message: "You are now logged in!" });
+    });
+  });
+});
+
+//Logout route
+router.post("/logout", (req, res) => {
+  //user the destroy method to clear our session
+  //Check to see if we are logged in
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 });
 
 // Delete a user at specified id
