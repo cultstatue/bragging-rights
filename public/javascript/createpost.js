@@ -46,6 +46,7 @@ async function checkGames(game) {
         .then(function(data) {
             const gameArray = data.map(({ game_title }) => game_title);
 
+            console.log(data)
             if(gameArray.includes(game)) {
 
                 console.log("no game added")
@@ -92,9 +93,17 @@ async function newPostHandler(event) {
     event.preventDefault();
 
     // grab form values
-    const achievement = document.querySelector('input[id="post-title-input"]').value
+    const postTitle = document.querySelector('input[id="post-title-input"]').value
+    const achievement = document.querySelector('input[id="post-achievement-input"]').value
     const game = document.querySelector('input[id="game-select-input"]').value
+    
+    if( postTitle == null || postTitle == "" || game == null || game == "" || achievement == null || achievement == "" ) {
+        
+        alert("Please ensure you've filled out the entire post form.")
+        return;
+    }
 
+    // check games database
     checkGames(game);
     
 }
