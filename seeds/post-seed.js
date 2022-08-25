@@ -3,7 +3,8 @@ const { Post } = require("../models");
 const postData = [
   {
     title: "Jumped over a rock",
-    post_url: "www.google.com",
+    post_url:
+      "https://static.wikia.nocookie.net/disney/images/c/ce/Profile_-_Bambi.png/revision/latest/scale-to-width-down/515?cb=20190313173158",
     user_id: 1,
     achievement_id: 1,
   },
