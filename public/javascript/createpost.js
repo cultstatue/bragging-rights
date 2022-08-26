@@ -1,15 +1,16 @@
 // logic to create a new achievement
-async function createAchievement(achievement, game) {
+async function createAchievement(title, game_id) {
    
     const genre = "test"
+
 
     const response = await fetch('/api/achievements', {
 
         method: 'POST',
         body: JSON.stringify({
 
-            achievement,
-            game,
+            title,
+            game_id,
             genre
 
         }),
@@ -30,7 +31,7 @@ async function createAchievement(achievement, game) {
 
 
 // logic to check games database and return games as an array
-async function checkGames(game) {
+async function checkGames(game, achievement) {
 
     const response = await fetch('/api/games', {
         method: 'GET',
@@ -45,6 +46,9 @@ async function checkGames(game) {
         response.json()
         .then(function(data) {
             const gameArray = data.map(({ game_title }) => game_title);
+            const gameIndex = data.findIndex( x => x.game_title == game)
+
+            const gameId = data[gameIndex].id;
 
             console.log(data)
             if(gameArray.includes(game)) {
@@ -56,7 +60,9 @@ async function checkGames(game) {
                 createGame(game)
 
             }
-   
+
+            createAchievement(achievement, gameId)
+            
         })
 
     } else {
@@ -92,19 +98,22 @@ async function createGame(game_title) {
 async function newPostHandler(event) {
     event.preventDefault();
 
+    // dummy img url to be replaced with info from uploader?
+    const url = "https://image.shutterstock.com/image-photo/lizard-isolated-on-white-background-600w-711991510.jpg"
+    
     // grab form values
     const postTitle = document.querySelector('input[id="post-title-input"]').value
     const achievement = document.querySelector('input[id="post-achievement-input"]').value
     const game = document.querySelector('input[id="game-select-input"]').value
     
-    if( postTitle == null || postTitle == "" || game == null || game == "" || achievement == null || achievement == "" ) {
+    if( postTitle == null || postTitle == "" || game == null || game == "" || achievement == null || achievement == "" || url == null || url == "") {
         
         alert("Please ensure you've filled out the entire post form.")
         return;
     }
 
     // check games database
-    checkGames(game);
+    checkGames(game, achievement);
     
 }
 
