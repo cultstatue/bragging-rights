@@ -94,7 +94,7 @@ router.post("/", (req, res) => {
   Post.create({
 
     title: req.body.title,
-    post_url: req.body.post_url,
+    img_id: req.body.img_id,
     achievement_id: req.body.achievement_id,
     user_id: req.session.user_id
 
