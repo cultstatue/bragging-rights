@@ -31,11 +31,11 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    post_url: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isURL: true,
+    img_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "image",
+        key: "id",
       },
     },
     user_id: {
