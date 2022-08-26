@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   console.log("=================");
   Post.findAll({
     //Query Config
-    attributes: ["id", "img_id", "title", "created_at"],
+    attributes: ["id", "title", "created_at"],
     // this shows our posts in most recent order
     order: [["created_at", "DESC"]],
     //performing the JOIN with include
@@ -70,6 +70,10 @@ router.get("/:id", (req, res) => {
         model: User,
         attributes: ["username"],
       },
+      {
+        model: Image,
+        attributes: ["id", "img_url"]
+      }
     ],
   })
     .then((dbPostData) => {
@@ -88,9 +92,12 @@ router.get("/:id", (req, res) => {
 // Create a post
 router.post("/", (req, res) => {
   Post.create({
+
     title: req.body.title,
-    img_id: req.body.img_id,
-    user_id: req.body.user_id,
+    post_url: req.body.post_url,
+    achievement_id: req.body.achievement_id,
+    user_id: req.session.user_id
+
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -104,7 +111,7 @@ router.put("/:id", (req, res) => {
   Post.update(
     {
       title: req.body.title,
-      img_id: req.body.img_id,
+      post_url: req.body.post_url,
     },
     {
       where: {
