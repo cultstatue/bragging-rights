@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment, Achievements, Game } = require("../models");
+const { Post, User, Comment, Achievements, Game, Image } = require("../models");
 
 router.get("/", (req, res) => {
   console.log(req.session);
@@ -35,6 +35,10 @@ router.get("/post/:id", (req, res) => {
           attributes: ["game_title"],
         },
       },
+      {
+        model: Image,
+        attributes: ["id", "img_url"]
+      }
     ],
   })
     .then((dbPostData) => {

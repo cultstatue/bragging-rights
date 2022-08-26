@@ -6,6 +6,7 @@ const {
   Comment,
   Achievements,
   Game,
+  Image,
 } = require("../../models");
 
 //get all games

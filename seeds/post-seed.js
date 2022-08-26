@@ -3,38 +3,37 @@ const { Post } = require("../models");
 const postData = [
   {
     title: "Jumped over a rock",
-    post_url:
-      "https://static.wikia.nocookie.net/disney/images/c/ce/Profile_-_Bambi.png/revision/latest/scale-to-width-down/515?cb=20190313173158",
+    img_id: 1,
     user_id: 1,
     achievement_id: 1,
   },
   {
     title: "Mined a tree!",
-    post_url: "www.google.com",
+    img_id: 2,
     user_id: 2,
     achievement_id: 2,
   },
   {
     title: "Shot a zombie",
-    post_url: "www.google.com",
+    img_id: 3,
     user_id: 3,
     achievement_id: 3,
   },
   {
     title: "Got a legendary gun",
-    post_url: "www.google.com",
+    img_id: 4,
     user_id: 4,
     achievement_id: 4,
   },
   {
     title: "Glitched!",
-    post_url: "www.google.com",
+    img_id: 5,
     user_id: 5,
     achievement_id: 6,
   },
   {
     title: "Snuck into glitch",
-    post_url: "www.google.com",
+    img_id: 6,
     user_id: 6,
     achievement_id: 5,
   },
