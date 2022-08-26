@@ -1,8 +1,8 @@
 // logic to create a new achievement
 async function createAchievement(title, game_id) {
    
+    // dummy data
     const genre = "test"
-
 
     const response = await fetch('/api/achievements', {
 
@@ -30,7 +30,7 @@ async function createAchievement(title, game_id) {
 }
 
 
-// logic to check games database and return games as an array
+// logic to check games database to see if the game exists yet or not
 async function checkGames(game, achievement) {
 
     const response = await fetch('/api/games', {
@@ -45,24 +45,32 @@ async function checkGames(game, achievement) {
 
         response.json()
         .then(function(data) {
-            const gameArray = data.map(({ game_title }) => game_title);
-            const gameIndex = data.findIndex( x => x.game_title == game)
 
-            const gameId = data[gameIndex].id;
+            // return array of only game names
+            const gameArray = data.map(({ game_title }) => game_title);
 
             console.log(data)
+
+            // check submitted game name against array to see if it exists in the database
             if(gameArray.includes(game)) {
 
                 console.log("no game added")
 
+                // get the index of the object where the given game title exists
+                const gameIndex = data.findIndex( x => x.game_title == game)
+
+                // isolate its game id
+                const gameId = data[gameIndex].id;
+
+                // create new achievemnt attatched to game id
+                createAchievement(achievement, gameId)
+
             } else {
 
-                createGame(game)
+                // if game does not exist in the database, create it and pass achievement to it
+                createGame(game, achievement)
 
-            }
-
-            createAchievement(achievement, gameId)
-            
+            }    
         })
 
     } else {
@@ -72,7 +80,7 @@ async function checkGames(game, achievement) {
 }
 
 // logic to create a new game
-async function createGame(game_title) {
+async function createGame(game_title, achievement) {
 
     const response = await fetch('/api/games', {
 
@@ -88,11 +96,46 @@ async function createGame(game_title) {
 
     if (response.ok) {
         console.log("game added!")
+
+        // pass game title and achievment to a function that gets the updated array of games
+        getNewGames(game_title, achievement)
     } else {
         alert(response.statusText)
     }
 }
 
+// find new array of games after creating a new game entry
+async function getNewGames(game, achievement) {
+
+    const response = await fetch('/api/games', {
+
+        method: 'GET',
+        headers: {
+
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if (response.ok) {
+
+        response.json()
+        .then(function(data) {
+
+            // get the index of the object where the given game title exists
+            const gameIndex = data.findIndex( x => x.game_title == game)
+
+            // isolate its game id
+            const gameId = data[gameIndex].id;
+
+            // if game does not exist in the database, create it and pass achievement to it
+            createAchievement(achievement, gameId)
+
+        })
+
+    } else {
+        alert(response.statusText)
+    }
+}
 
 
 async function newPostHandler(event) {
@@ -112,7 +155,7 @@ async function newPostHandler(event) {
         return;
     }
 
-    // check games database
+    // check games database and create new game and achievement
     checkGames(game, achievement);
     
 }
