@@ -1,15 +1,26 @@
 const router = require("express").Router();
-const { User, Post, Like, Comment, Achievements } = require("../../models");
+const {
+  User,
+  Post,
+  Like,
+  Comment,
+  Achievements,
+  Image,
+} = require("../../models");
 
 router.get("/", (req, res) => {
   console.log("=================");
   Post.findAll({
     //Query Config
-    attributes: ["id", "post_url", "title", "created_at"],
+    attributes: ["id", "title", "created_at"],
     // this shows our posts in most recent order
     order: [["created_at", "DESC"]],
     //performing the JOIN with include
     include: [
+      {
+        model: Image,
+        attributes: ["id", "img_url"],
+      },
       {
         model: Achievements,
         attributes: ["id", "title"],
@@ -59,6 +70,10 @@ router.get("/:id", (req, res) => {
         model: User,
         attributes: ["username"],
       },
+      {
+        model: Image,
+        attributes: ["id", "img_url"]
+      }
     ],
   })
     .then((dbPostData) => {
@@ -77,9 +92,12 @@ router.get("/:id", (req, res) => {
 // Create a post
 router.post("/", (req, res) => {
   Post.create({
+
     title: req.body.title,
-    post_url: req.body.post_url,
-    user_id: req.body.user_id,
+    img_id: req.body.img_id,
+    achievement_id: req.body.achievement_id,
+    user_id: req.session.user_id
+
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {

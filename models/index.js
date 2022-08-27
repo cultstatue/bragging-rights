@@ -10,6 +10,8 @@ const Game = require("./Game");
 
 const Achievements = require("./Achievment");
 
+const Image = require("./Image");
+
 //Create our model associations
 //Note: User to Post is one to Many
 User.hasMany(Post, {
@@ -87,4 +89,13 @@ Game.hasMany(Achievements, {
   foreignKey: "game_id",
 });
 
-module.exports = { Post, User, Like, Game, Achievements, Comment };
+//Post image association
+Post.hasOne(Image, {
+  foreignKey: "img_id",
+});
+
+Post.belongsTo(Image, {
+  foreignKey: "img_id",
+});
+
+module.exports = { Post, User, Like, Game, Achievements, Comment, Image };

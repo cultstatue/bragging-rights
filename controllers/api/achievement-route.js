@@ -6,6 +6,7 @@ const {
   Comment,
   Achievements,
   Game,
+  Image,
 } = require("../../models");
 // const sequelize = require("../../config/connection");
 

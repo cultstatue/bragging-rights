@@ -3,6 +3,7 @@ const seedPosts = require("./post-seed");
 const seedComments = require("./comment-seed");
 const seedLikes = require("./like-seed");
 const seedGames = require("./game-seed");
+const seedImages = require("./image-seed");
 const seedAchievements = require("./achievement-seed");
 
 const sequelize = require("../config/connection");
@@ -15,6 +16,8 @@ const seedAll = async () => {
   console.log("SEEDED GAMES");
   await seedAchievements();
   console.log("SEEDED ACHIEVEMENTS");
+  await seedImages();
+  console.log("SEEDED IMAGES");
   await seedPosts();
   console.log("SEEDED POSTS");
   await seedComments();

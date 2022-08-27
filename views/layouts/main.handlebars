@@ -38,16 +38,15 @@
             <li class="nav-item">
               <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
-            {{!-- {{#if loggedIn}} --}}
+            {{#if loggedIn}}
             <li class="nav-item">
               <button id="logout" class="btn btn-danger">Logout</button>
             </li>
-            {{!-- {{else}} --}}
+            {{else}}
             <li class="nav-item">
               <a class="nav-link" href="/login">Log In</a>
             </li>
-            {{!-- {{/if}} --}}
-
+            {{/if}}
           </ul>
         </div>
       </div>
@@ -58,7 +57,9 @@
     <footer>
 
     </footer>
+    {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
+    {{/if}}
   </body>
 
 </html>
