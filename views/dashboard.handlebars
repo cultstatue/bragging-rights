@@ -50,21 +50,34 @@
 
     <div class="row">
       <h1>Your Achievements</h1>
-      <div class="col">
+      
         {{#if posts.length}}
-
+        
           {{#each posts as |post|}}
+            <div class="col-auto mb-3">
+            <div class="card" style="width: 18rem;">
             
-            {{ post.title }}
+            <img src="{{post.image.img_url}}" class="card-img-top" alt="...">
+              <div class="card-body">
 
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ post.achievement.title }}</h6>
+                 <div class="d-grid gap-1 mb-2">
+                 <a href="/post/{{post.id}}"class="btn btn-primary btn-sm">{{post.comments.length}} comments(s)</a>
+                <a href="/dashboard/edit/{{post.id}}" class="btn btn-secondary btn-sm">Edit Post</a>
+                </div>
+                <p class="card-text"><small class="text-muted">{{ post.created_at }}</small></p>
+              </div>
+            </div>
+            </div>
           {{/each}}
-
+          
           {{else}}
 
           No achievements recorded yet. Too bad!
-
+        
         {{/if}}
-      </div>
+      
 
     </div>
 
