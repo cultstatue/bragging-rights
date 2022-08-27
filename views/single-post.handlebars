@@ -4,11 +4,17 @@
 
   </div>
   <div class="meta">
+    <div class="card" style="width: 18rem;">
+      <img
+        class="card-img-top"
+        src="{{post.image.img_url}}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <p class="card-text">{{post.achievement.title}}</p>
+      </div>
+    </div>
 
-    <img src="{{post.image.img_url}}" />
-
-    Achievement title:
-    {{post.achievement.title}}
     username of post author:
     {{post.user.username}}
     game title:
