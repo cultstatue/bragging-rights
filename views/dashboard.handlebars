@@ -53,26 +53,9 @@
       <div class="col">
         {{#if posts.length}}
 
-          {{#each post as |post|}}
-
+          {{#each posts as |post|}}
+            
             {{ post.title }}
-{{!-- 
-            <div class="card" style="width: 18rem;">
-
-              <img src="IMG URL WILL GO HERE" class="card-img-top" alt="...">
-
-              <div class="card-body">
-
-                <h5 class="card-title">{{achievment.title}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{games.game_title}}</h6>
-
-                <a href="/post/{{post.id}}">{{comments.length}} comments</a>
-
-                <a href="/" class="btn btn-primary">Edit Post</a>
-                
-              </div>
-
-            </div> --}}
 
           {{/each}}
 
