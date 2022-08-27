@@ -26,7 +26,7 @@ async function createAchievement(title, game_id, postTitle, imgUrl) {
 }
 // create new image
 async function createImage(achievementId, postTitle, img_url) {
-  const reponse = await fetch("/api/images", {
+  const response = await fetch("/api/images", {
     method: "POST",
     body: JSON.stringify({
       img_url,
@@ -35,8 +35,8 @@ async function createImage(achievementId, postTitle, img_url) {
       "Content-Type": "application/json",
     },
   });
-  if (reponse.ok) {
-    reponse.json().then(function (data) {
+  if (response.ok) {
+    response.json().then(function (data) {
       const imgId = data.id;
 
       console.log(imgId);
@@ -131,7 +131,7 @@ async function getNewGames(game, achievement, postTitle, imgUrl) {
 
 // function to create the new post
 async function createNewPost(achievement_id, title, img_id) {
-  const reponse = await fetch("/api/posts", {
+  const response = await fetch("/api/posts", {
     method: "POST",
     body: JSON.stringify({
       title,
@@ -142,8 +142,9 @@ async function createNewPost(achievement_id, title, img_id) {
       "Content-Type": "application/json",
     },
   });
-  if (reponse.ok) {
+  if (response.ok) {
     console.log("post created!");
+    document.location.replace('/dashboard');
   } else {
     alert(response.statusText);
   }

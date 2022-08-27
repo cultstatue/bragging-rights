@@ -62,4 +62,31 @@ router.post("/", (req, res) => {
     });
 });
 
+// change achievement 
+router.put('/:id', (rec, res) => {
+
+  Achievements.update(
+
+    {
+      title: req.body.title,
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+  .then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No achievement found with this id' });
+      return;
+    }
+    res.json(dbPostData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+})
+
 module.exports = router;
