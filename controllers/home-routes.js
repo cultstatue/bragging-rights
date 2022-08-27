@@ -3,8 +3,45 @@ const sequelize = require("../config/connection");
 const { Post, User, Comment, Achievements, Game, Image } = require("../models");
 
 router.get("/", (req, res) => {
-  console.log(req.session);
-  res.render("homepage");
+  Post.findAll({
+    //Query Config
+    attributes: ["id", "title", "created_at"],
+    // this shows our posts in most recent order
+
+    include: [
+      {
+        model: Image,
+        attributes: ["id", "img_url"],
+      },
+      {
+        model: Achievements,
+        attributes: ["id", "title"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      res.render("homepage", {
+        posts,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.get("/post/:id", (req, res) => {
@@ -37,8 +74,8 @@ router.get("/post/:id", (req, res) => {
       },
       {
         model: Image,
-        attributes: ["id", "img_url"]
-      }
+        attributes: ["id", "img_url"],
+      },
     ],
   })
     .then((dbPostData) => {
