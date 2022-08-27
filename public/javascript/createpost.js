@@ -1,3 +1,5 @@
+// var img_url = "";
+console.log("in createpost.js");
 // logic to create a new achievement
 async function createAchievement(title, game_id, postTitle, imgUrl) {
   // dummy data
@@ -153,10 +155,6 @@ async function createNewPost(achievement_id, title, img_id) {
 async function newPostHandler(event) {
   event.preventDefault();
 
-  // dummy img url to be replaced with info from uploader?
-  const imgUrl =
-    "https://image.shutterstock.com/image-photo/lizard-isolated-on-white-background-600w-711991510.jpg";
-
   // grab form values
   const postTitle = document.querySelector(
     'input[id="post-title-input"]'
@@ -173,17 +171,17 @@ async function newPostHandler(event) {
     game == "" ||
     achievementName == null ||
     achievementName == "" ||
-    imgUrl == null ||
-    imgUrl == ""
+    img_url == null ||
+    img_url == ""
   ) {
     alert("Please ensure you've filled out the entire post form.");
     return;
   }
 
   // check games and chain through creating a post
-  checkGames(game, achievementName, postTitle, imgUrl);
+  checkGames(game, achievementName, postTitle, img_url);
 }
 
 document
-  .querySelector("#form-submit")
+  .querySelector(".new-post-form")
   .addEventListener("submit", newPostHandler);
