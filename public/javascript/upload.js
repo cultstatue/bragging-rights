@@ -1,4 +1,4 @@
-const uploader = new Uploader({
+const upload = new Upload({
   // Get production API keys from Upload.io
   apiKey: "public_FW25au47S9ruZD1ciduXmCQcMLHc",
 });
