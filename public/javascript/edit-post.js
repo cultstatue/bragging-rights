@@ -41,6 +41,8 @@ async function getAchievementId(postId, achievement) {
 
             const achievementId = data.achievement.id
 
+            console.log(achievementId)
+
             updateAchievement(achievementId, achievementTitle)
         })
         

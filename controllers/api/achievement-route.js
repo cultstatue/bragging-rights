@@ -63,8 +63,7 @@ router.post("/", (req, res) => {
 });
 
 // change achievement 
-router.put('/:id', (rec, res) => {
-
+router.put('/:id', (req, res) => {
   Achievements.update(
 
     {
