@@ -1,9 +1,9 @@
 body {
-  background-image: url("https://cdn3.vectorstock.com/i/1000x1000/35/32/retro-game-seamless-pattern-background-vector-30253532.jpg");
+  background-image: url("https://i.pinimg.com/564x/21/83/4d/21834d22917243cc3d36ca5e550233a2.jpg");
   /* background-repeat: no-repeat; */
   height: 100%;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: cover;
 }
 li {
