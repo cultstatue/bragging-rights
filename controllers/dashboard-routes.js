@@ -51,7 +51,7 @@ router.get("/", (req, res) => {
 
     const posts = response[1].map((post) => post.get({ plain: true }));
     
-    res.render('dashboard', { games, posts })
+    res.render('dashboard', { games, posts, loggedIn: req.session.loggedIn })
   })
   .catch(err => {
     console.log(err)
