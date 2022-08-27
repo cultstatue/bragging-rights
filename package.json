@@ -30,6 +30,8 @@
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
     "seed": "^0.4.4",
-    "sequelize": "^6.21.3"
+    "sequelize": "^6.21.3",
+    "upload-js": "^1.48.21",
+    "uploader": "^1.48.0"
   }
 }

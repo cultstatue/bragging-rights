@@ -1,0 +1,8 @@
+li {
+  list-style: none;
+  margin: 15px;
+}
+
+ol li:nth-child(n + 4) {
+  display: none;
+}

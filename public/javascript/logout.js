@@ -1,5 +1,6 @@
 //Function to handle logout button
 async function logout() {
+  console.log("I pressed logout");
   //fetch the logout route from users and post the return
   const response = await fetch("/api/users/logout", {
     method: "post",
