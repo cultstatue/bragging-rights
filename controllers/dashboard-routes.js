@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
     attributes: ["id", "game_title"],
   })
 
+
   const postData = Post.findAll({
     where: {
       // use the ID from the session
@@ -57,6 +58,7 @@ router.get("/", (req, res) => {
     console.log(err)
   })
   
+
 });
 
 router.get('/edit/:id', (req, res) => {

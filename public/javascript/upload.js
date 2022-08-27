@@ -2,6 +2,7 @@ const upload = new Upload({
   // Get production API keys from Upload.io
   apiKey: "public_FW25au47S9ruZD1ciduXmCQcMLHc",
 });
+
 async function onFileSelected(event) {
   const [file] = event.target.files;
   const { fileUrl } = await upload.uploadFile({
@@ -10,4 +11,5 @@ async function onFileSelected(event) {
     onProgress: ({ progress }) => console.log(`File uploading... ${progress}%`),
   });
   console.log(`File uploaded! ${fileUrl}`);
+  img_url = fileUrl;
 }
