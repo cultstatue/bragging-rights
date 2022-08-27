@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
   })
     .then((dbGamesData) => {
       const games = dbGamesData.map((game) => game.get({ plain: true }));
-      res.render("dashboard", { games });
+      res.render("dashboard", { games, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
