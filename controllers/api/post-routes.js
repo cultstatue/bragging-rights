@@ -6,6 +6,7 @@ const {
   Comment,
   Achievements,
   Image,
+  Game,
 } = require("../../models");
 const withAuth = require("../../utils/auth");
 

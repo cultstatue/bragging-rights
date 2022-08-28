@@ -19,7 +19,10 @@
                         <img class="card-img-top" src="{{post.image.img_url}}" alt="Card image cap">
                         <div class="card-body gradient-grey">
                             <h5 class="card-title orbitron-font">{{post.title}}</h5>
-                            <p class="card-text silkscreen-font"> {{post.achievement.title}}</p>
+                            <p class="card-text orbitron-font  "> achieved by {{post.user.username}}</p>
+                            <p class="card-text border-gold silkscreen-font"><span class="oi oi-star"></span> {{post.achievement.title}}</p>
+                            <p class="card-text border-black silkscreen-font"><span class="oi oi-monitor"></span> {{post.achievement.game.game_title}}</p>
+                            <p class="tiny-text silkscreen-font">{{format_date post.created_at}}</p>
                             <a href="/post/{{post.id}}" class="btn silkscreen-font gradient-scroll">See this post!</a>
                         </div>
                         </div>

@@ -64,3 +64,14 @@ ol li:nth-child(n + 4) {
   border-color: gold;
   background-color: beige;
 }
+.border-gold {
+  border: 2px dotted;
+  border-color: gold;
+}
+.border-black {
+  border-bottom: 2px solid;
+  border-color: rgb(14, 12, 1);
+}
+.tiny-text {
+  font-size: 4mm;
+}
