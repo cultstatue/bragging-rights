@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Post, User, Comment, Game, Achievements, Image } = require("../models");
-
+const withAuth = require("../utils/auth");
 // load up the dashboard
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   const gameData = Game.findAll({
     attributes: ["id", "game_title"],
   });
@@ -51,7 +51,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/edit/:id", (req, res) => {
+router.get("/edit/:id", withAuth, (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id,
