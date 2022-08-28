@@ -9,7 +9,7 @@ const {
   Image,
 } = require("../../models");
 // const sequelize = require("../../config/connection");
-
+const withAuth = require("../../utils/auth");
 router.get("/", (req, res) => {
   Achievements.findAll({
     attributes: ["id", "title", "genre", "game_id"],
@@ -49,7 +49,7 @@ router.get("/:id", (req, res) => {
 });
 
 //post new achievement
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Achievements.create({
     title: req.body.title,
     game_id: req.body.game_id,
@@ -62,30 +62,29 @@ router.post("/", (req, res) => {
     });
 });
 
-// change achievement 
-router.put('/:id', (req, res) => {
+// change achievement
+router.put("/:id", withAuth, (req, res) => {
   Achievements.update(
-
     {
       title: req.body.title,
     },
     {
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     }
   )
-  .then(dbPostData => {
-    if (!dbPostData) {
-      res.status(404).json({ message: 'No achievement found with this id' });
-      return;
-    }
-    res.json(dbPostData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-})
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No achievement found with this id" });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;

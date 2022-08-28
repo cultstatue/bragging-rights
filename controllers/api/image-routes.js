@@ -7,6 +7,7 @@ const {
   Achievements,
   Image,
 } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
   Image.findAll({})
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   //using uploader when image is trying to be created
 
   Image.create({

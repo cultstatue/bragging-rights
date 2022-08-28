@@ -7,6 +7,7 @@ const {
   Achievements,
   Image,
 } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
   console.log("=================");
@@ -72,8 +73,8 @@ router.get("/:id", (req, res) => {
       },
       {
         model: Image,
-        attributes: ["id", "img_url"]
-      }
+        attributes: ["id", "img_url"],
+      },
     ],
   })
     .then((dbPostData) => {
@@ -90,14 +91,12 @@ router.get("/:id", (req, res) => {
 });
 
 // Create a post
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Post.create({
-
     title: req.body.title,
     img_id: req.body.img_id,
     achievement_id: req.body.achievement_id,
-    user_id: req.session.user_id
-
+    user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -107,7 +106,7 @@ router.post("/", (req, res) => {
 });
 
 //Update post
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
@@ -132,7 +131,7 @@ router.put("/:id", (req, res) => {
 });
 
 //Delete a post
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Post.destroy({
     where: {
       id: req.params.id,
