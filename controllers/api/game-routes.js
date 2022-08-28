@@ -8,6 +8,7 @@ const {
   Game,
   Image,
 } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 //get all games
 router.get("/", (req, res) => {
@@ -37,7 +38,7 @@ router.get("/:id", (req, res) => {
 });
 
 //Create new game
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Game.create({
     game_title: req.body.game_title,
   })

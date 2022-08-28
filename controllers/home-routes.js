@@ -16,6 +16,10 @@ router.get("/", (req, res) => {
       {
         model: Achievements,
         attributes: ["id", "title"],
+        include: {
+          model: Game,
+          attributes: ["game_title"],
+        },
       },
       {
         model: Comment,
