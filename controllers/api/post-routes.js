@@ -132,9 +132,12 @@ router.post("/", withAuth, (req, res) => {
 
 // Like defined before post put/(.../:id), otherwise express will think the word addlike is a parameter for /:id
 //PUT /api/posts/addlike
-router.put("/addlike", (req, res) => {
+router.put("/addlike", withAuth, (req, res) => {
   //using our static model add-like
-  Post.addlike(req.body, { Like })
+  Post.addlike(
+    { ...req.body, user_id: req.session.user_id },
+    { Like, Comment, User }
+  )
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
       console.log(err);
