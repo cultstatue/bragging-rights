@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const sequelize = require("sequelize");
 const {
   User,
   Post,
@@ -14,7 +15,17 @@ router.get("/", (req, res) => {
   console.log("=================");
   Post.findAll({
     //Query Config
-    attributes: ["id", "title", "created_at"],
+    attributes: [
+      "id",
+      "title",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)"
+        ),
+        "like_count",
+      ],
+    ],
     // this shows our posts in most recent order
     order: [["created_at", "DESC"]],
     //performing the JOIN with include
@@ -55,6 +66,19 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    attributes: [
+      "id",
+      "title",
+      "img_id",
+      "user_id",
+      "achievement_id",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)"
+        ),
+        "like_count",
+      ],
+    ],
     include: [
       {
         model: Achievements,
@@ -103,6 +127,18 @@ router.post("/", withAuth, (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
+    });
+});
+
+// Like defined before post put/(.../:id), otherwise express will think the word addlike is a parameter for /:id
+//PUT /api/posts/addlike
+router.put("/addlike", (req, res) => {
+  //using our static model add-like
+  Post.addlike(req.body, { Like })
+    .then((dbPostData) => res.json(dbPostData))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
     });
 });
 

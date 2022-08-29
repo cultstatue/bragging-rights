@@ -22,8 +22,6 @@ const seedAll = async () => {
   console.log("SEEDED POSTS");
   await seedComments();
   console.log("SEEDED Comments");
-  await seedLikes();
-  console.log("SEEDED LIKES");
 
   process.exit(0);
 };

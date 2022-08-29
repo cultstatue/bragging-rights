@@ -24,7 +24,7 @@ Post.belongsTo(User, {
 });
 
 //associating Like with both User and Post
-// Now we can query both User and Post to see their Like data AKA how many likes a user has made OR how many likes a post has
+// Now we can query both User and Post to see their Like data this prevents a user liking a matched post multiple times
 User.belongsToMany(Post, {
   through: Like,
   as: "liked_posts",
