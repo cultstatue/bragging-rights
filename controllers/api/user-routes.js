@@ -1,5 +1,12 @@
 const router = require("express").Router();
-const { User, Post, Like, Comment, Achievements } = require("../../models");
+const {
+  User,
+  Post,
+  Like,
+  Comment,
+  Achievements,
+  Image,
+} = require("../../models");
 
 //get all users /api/users
 router.get("/", (req, res) => {
@@ -31,6 +38,13 @@ router.get("/:id", (req, res) => {
             attributes: ["img_url"],
           },
         ],
+      },
+      //including likes
+      {
+        model: Post,
+        attributes: ["title"],
+        through: Like,
+        as: "liked_posts",
       },
       // include the Comment model here:
       {

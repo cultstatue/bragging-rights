@@ -10,12 +10,6 @@ Like.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    //What needs to go here?
-    // The user and post id's to make likes relational to them
-    count: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
