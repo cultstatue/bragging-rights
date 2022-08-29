@@ -77,31 +77,33 @@
         </div>
         <div class="card-footer text-muted silkscreen-font gradient-scroll">
           achieved on
-          {{post.created_at}}
+          {{format_date post.created_at}}
         </div>
       </div>
     </div>
   </div>
   <div class="row mt-5">
-    <form class="comment-form">
-      <div class="form-group">
-        <label
-          class="comment-title rounded orbitron-font"
-          for="exampleFormControlTextarea1"
-        >Say something about this post </label>
-        <textarea
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          rows="3"
-          name="comment-body"
-        ></textarea>
-      </div>
-      <div>
-        <button
-          class="comment-btn btn btn-primary silkscreen-font"
-        >Comment</button>
-      </div>
-    </form>
+    {{#if loggedIn}}
+      <form class="comment-form">
+        <div class="form-group">
+          <label
+            class="comment-title rounded orbitron-font"
+            for="exampleFormControlTextarea1"
+          >Say something about this post </label>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            name="comment-body"
+          ></textarea>
+        </div>
+        <div>
+          <button
+            class="comment-btn btn btn-primary silkscreen-font"
+          >Comment</button>
+        </div>
+      </form>
+    {{/if}}
     <div class="card">
       <div class="card-header comment-title orbitron-font">
         Comments
@@ -121,36 +123,6 @@
     </div>
   </div>
 
-  {{! Comment section }}
-
-  {{!-- <div class="row">
-    <div class="col-lg-7 mb-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Comments</h5>
-        </div>
-        
-        <a href="/post/{{post.id}}">{{post.comments.length}}
-          {{format_plural "comment" post.comments.length}}</a>
-
-        <div class="comments">
-         
-            <section class="comment">
-              <div class="meta">
-                {{user.username}}
-                on
-                {{format_date created_at}}
-              </div>
-              <div class="text">
-                {{comment_text}}
-              </div>
-            </section>
-          {{/each}}
-
-        </div>
-      </div>
-    </div>
-  </div> --}}
 </div>
 
 <script src="/javascript/comment.js"></script>

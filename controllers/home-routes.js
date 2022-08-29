@@ -53,6 +53,17 @@ router.get("/post/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    attributes: [
+      "id",
+      "title",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)"
+        ),
+        "like_count",
+      ],
+    ],
     include: [
       //include the comments made on this post with their username and achievements
       {
@@ -83,6 +94,7 @@ router.get("/post/:id", (req, res) => {
     ],
   })
     .then((dbPostData) => {
+      // console.log(dbPostData);
       if (!dbPostData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
