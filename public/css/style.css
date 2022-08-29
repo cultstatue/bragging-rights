@@ -50,6 +50,19 @@ ol li:nth-child(n + 4) {
   color: rgb(6, 7, 7);
 }
 
+.gradient-red {
+  background: linear-gradient(
+    90deg, 
+    rgba(135,7,31,1) 0%, 
+    rgba(232,23,34,1) 49%, 
+    rgba(135,7,31,1) 100%
+    );
+}
+
+.gradient-green {
+  background: linear-gradient(90deg, rgba(8,98,18,1) 0%, rgba(145,226,132,1) 49%, rgba(8,98,18,1) 100%);
+}
+
 .rules-card {
   height: 300px;
 }
