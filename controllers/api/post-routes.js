@@ -72,6 +72,7 @@ router.get("/:id", (req, res) => {
       "img_id",
       "user_id",
       "achievement_id",
+      "created_at",
       [
         sequelize.literal(
           "(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)"
@@ -103,6 +104,7 @@ router.get("/:id", (req, res) => {
     ],
   })
     .then((dbPostData) => {
+      console.log(dbPostData);
       if (!dbPostData) {
         res.status(404).json({ message: "No Post found with this id" });
         return;
@@ -169,6 +171,14 @@ router.put("/:id", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+// //Grab Posts with game
+// router.get('/:game_title'){
+//   Post.findOne({
+//     where:{
+
+//     }
+//   })
+// }
 
 //Delete a post
 router.delete("/:id", withAuth, (req, res) => {

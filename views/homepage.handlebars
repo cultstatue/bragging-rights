@@ -5,10 +5,18 @@
         
         <div class="container">
             <div class="row gx-5">
-                {{!-- <div class="col  d-flex justify-content-center text-center">
-                Could add search bar here(search by game/genre)
-                </div> --}}
-                <div class="col-8  d-flex justify-content-center text-center">
+                <div class="col d-flex justify-content-center text-center">
+                <div class="input-group mt-5 ">
+                    <div class="form-outline">
+                        <input type="search" id="form1" class="form-control" />
+                         <button type="button" class="m-2 search-btn btn btn-primary">
+                        <i class="fas fa-search">Search</i>
+                    </button>
+                    </div>
+                   
+                    </div>
+                </div>
+                <div class="col-8 d-flex justify-content-center text-center">
                     
                     <ol id="post-list">
                         <h1 class='silkscreen-font brag-title'>Brags</h1>
@@ -53,4 +61,5 @@
             
 </section>
 <script src="/javascript/homepage.js"></script>
+<script src="/javascript/search.js"></script>
 
