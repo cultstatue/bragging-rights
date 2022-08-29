@@ -1,56 +1,157 @@
-  {{!-- Achievement details section --}}
-  <div class="col-lg-4 mb-4">
-    <div class="card">  
-      <div class="card-body">
-        <h3 class="card-title"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg> {{post.achievement.title}} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg>
-        </h3>
-        <p class="card-text">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-controller" viewBox="0 0 16 16">
-            <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1v-1z"/>
-            <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.373.297.408.408.78 1.05 1.095 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.816-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773-.245-.232-.496-.526-.739-.808-.126-.148-.25-.292-.368-.423-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.423-.243.282-.494.575-.739.808-.398.38-.877.706-1.513.773a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772a2.34 2.34 0 0 1 .433-.335.504.504 0 0 1-.028-.079zm2.036.412c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 0 0-.748 2.295 12.351 12.351 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.504C4.861 9.969 5.978 9.027 8 9.027s3.139.942 3.965 1.855c.164.181.307.348.44.504.214.251.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.354 12.354 0 0 0-.339-2.406 13.753 13.753 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z"/>
-          </svg> {{post.achievement.game.game_title}}
-        </p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div
+        class="card gradient-grey"
+        style="max-width: 45rem; min-width: 30rem;"
+      >
+        <img
+          class="card-img-top"
+          src="{{post.image.img_url}}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title orbitron-font">{{post.title}}</h5>
+          <p class="card-text orbitron-font">
+            achieved by
+            {{post.user.username}}</p>
+          <p class="card-text border-gold silkscreen-font"><span
+              class="oi oi-star"
+            ></span>
+            {{post.achievement.title}}</p>
+          <p class="card-text border-black silkscreen-font"><span
+              class="oi oi-monitor"
+            ></span>
+            {{post.achievement.game.game_title}}</p>
+          <p class="tiny-text silkscreen-font">{{format_date
+              post.created_at
+            }}</p>
+          <button class="btn gradient-scroll" disabled>{{post.like_count}}
+            {{format_plural "like" post.like_count}}</button>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center margin-50">
+        <div class="card-header silkscreen-font gradient-scroll">
+          ACHIEVEMENT
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-trophy"
+            viewBox="0 0 16 16"
+          ><path
+              d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"
+            ></path></svg>
+        </div>
+        <div class="card-body achievement-back">
+
+          <h5
+            class="card-title silkscreen-font gradient-red rounded"
+          >{{post.achievement.title}}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-controller"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1v-1z"
+              ></path>
+              <path
+                d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.373.297.408.408.78 1.05 1.095 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.816-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773-.245-.232-.496-.526-.739-.808-.126-.148-.25-.292-.368-.423-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.423-.243.282-.494.575-.739.808-.398.38-.877.706-1.513.773a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772a2.34 2.34 0 0 1 .433-.335.504.504 0 0 1-.028-.079zm2.036.412c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 0 0-.748 2.295 12.351 12.351 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.504C4.861 9.969 5.978 9.027 8 9.027s3.139.942 3.965 1.855c.164.181.307.348.44.504.214.251.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.354 12.354 0 0 0-.339-2.406 13.753 13.753 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z"
+              ></path>
+            </svg></h5>
+          <h5
+            class="card-title silkscreen-font tiny-text gradient-grey rounded"
+          >{{post.achievement.game.game_title}}</h5>
+
+          <button class="like-btn mt-5 btn gradient-scroll silkscreen-font">Like
+            this post!</button>
+        </div>
+        <div class="card-footer text-muted silkscreen-font gradient-scroll">
+          achieved on
+          {{post.created_at}}
+        </div>
       </div>
     </div>
   </div>
-  </div>
-</div>
-
-{{!-- Comment section --}}
-<div class="container">
-  <div class="row">
-    <div class="col-lg-7 mb-4">
-     <div class="card">  
-      <div class="card-body">
-          <h5 class="card-title">Comments</h5>
-    <div>
+  <div class="row mt-5">
     <form class="comment-form">
-          <div class="form-group">
-          <label for="exampleFormControlTextarea1">Comment this Achievement</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <div>
-          <a href="#" class="btn btn-primary">Comment</a>
-        </div>
-      </form>
-  <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
-  <div class="comments">
-  {{#each post.comments as |comment|}}
-    <section class="comment">
-      <div class="meta">
-        {{user.username}}
-        on
-        {{created_at}}
+      <div class="form-group">
+        <label
+          class="comment-title rounded orbitron-font"
+          for="exampleFormControlTextarea1"
+        >Say something about this post </label>
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          name="comment-body"
+        ></textarea>
       </div>
-      <div class="text">
-        {{comment_text}}
+      <div>
+        <button
+          class="comment-btn btn btn-primary silkscreen-font"
+        >Comment</button>
       </div>
-    </section>
-  {{/each}}
+    </form>
+    <div class="card">
+      <div class="card-header comment-title orbitron-font">
+        Comments
+      </div>
+      {{#each post.comments as |comment|}}
+        <div class="card-body manilla">
+          <blockquote class="blockquote mb-0">
+            <p>{{comment_text}}</p>
+            <footer class="blockquote-footer">written by
+              <cite
+                class="silkscreen-font"
+                title="Source Title"
+              >{{user.username}}</cite></footer>
+          </blockquote>
+        </div>
+      {{/each}}
+    </div>
+  </div>
 
+  {{! Comment section }}
+
+  {{!-- <div class="row">
+    <div class="col-lg-7 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Comments</h5>
+        </div>
+        
+        <a href="/post/{{post.id}}">{{post.comments.length}}
+          {{format_plural "comment" post.comments.length}}</a>
+
+        <div class="comments">
+         
+            <section class="comment">
+              <div class="meta">
+                {{user.username}}
+                on
+                {{format_date created_at}}
+              </div>
+              <div class="text">
+                {{comment_text}}
+              </div>
+            </section>
+          {{/each}}
+
+        </div>
+      </div>
+    </div>
+  </div> --}}
 </div>
 
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/add-like.js"></script>
-
-

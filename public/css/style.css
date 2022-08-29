@@ -52,25 +52,36 @@ ol li:nth-child(n + 4) {
 
 .gradient-red {
   background: linear-gradient(
-    90deg, 
-    rgba(135,7,31,1) 0%, 
-    rgba(232,23,34,1) 49%, 
-    rgba(135,7,31,1) 100%
-    );
+    90deg,
+    rgba(135, 7, 31, 1) 0%,
+    rgba(232, 23, 34, 1) 49%,
+    rgba(135, 7, 31, 1) 100%
+  );
 }
 
 .gradient-green {
-  background: linear-gradient(90deg, rgba(8,98,18,1) 0%, rgba(145,226,132,1) 49%, rgba(8,98,18,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(8, 98, 18, 1) 0%,
+    rgba(145, 226, 132, 1) 49%,
+    rgba(8, 98, 18, 1) 100%
+  );
 }
 
 .rules-card {
   height: 300px;
 }
-
+.rounded {
+  border-radius: 15px;
+}
 .margin-50 {
   margin-top: 22%;
 }
-
+.achievement-back {
+  background-image: url("https://img.freepik.com/premium-vector/fireworks-night-sky-with-pixel-art-style_475147-629.jpg");
+  background-position: center;
+  background-size: contain;
+}
 .brag-title {
   border: solid 5px;
   border-top: none;
@@ -87,4 +98,14 @@ ol li:nth-child(n + 4) {
 }
 .tiny-text {
   font-size: 4mm;
+}
+.comment-title {
+  background-color: gainsboro;
+  margin-bottom: 5px;
+  font-size: large;
+  padding: 5px;
+}
+
+.manilla {
+  background-color: rgb(247, 236, 200);
 }
