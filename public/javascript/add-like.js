@@ -20,7 +20,8 @@ async function likeClickHandler(event) {
   if (response.ok) {
     document.location.reload();
   } else {
-    alert(response.statusText);
+    // alert(response.statusText);
+    window.location.replace("/");
   }
 }
 

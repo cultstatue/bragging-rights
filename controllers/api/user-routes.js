@@ -108,6 +108,7 @@ router.post("/login", (req, res) => {
       res.status(400).json({
         message: "No account found with either your password or email",
       });
+
       return;
     }
 

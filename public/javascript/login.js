@@ -46,7 +46,8 @@ async function loginFormHandler(event) {
       console.log(response);
       document.location.replace("/dashboard");
     } else {
-      console.log(response);
+      // console.log(response);
+      response.json().then((data) => alert(data.message));
       alert(response.statusText);
     }
   }
