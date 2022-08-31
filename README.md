@@ -1,8 +1,6 @@
 ## Bragging Rights
 
 ## Contributors
-
-<h2> made by:</h2>
 <a href = "github.com/clairecashmore17">Claire Cashmore</a>
 <a href = "github.com/cultstatue">Maddie Doutt</a>
 <a href = "github.com/malickbax">Malick Ba</a>
@@ -28,6 +26,10 @@ npm i to download all our dependencies.
 ## Usage
 
 Use for development of Bragging Rights
+
+Please see the below link for a live deployment of this application:
+
+https://aqueous-stream-06315.herokuapp.com/
 
 ## How to Contribute
 
