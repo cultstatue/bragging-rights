@@ -174,29 +174,27 @@ router.get("/:game_title", (req, res) => {
         return;
       }
       console.log(req.params.game_title);
-      //serializing our data
-      // const postData = dbPostData.map((post) => post.get({ plain: true }));
-      // const posts = [];
-      // console.log(postData);
-      // postData.forEach((post) => {
-      //   post.filter(function (postdata) {
-      //     posts.push(
-      //       postdata.achievement.game.game_title === req.params.game_title
-      //     );
-      //   });
-      // });
+      // serializing our data
+      const postData = dbPostData.map((post) => post.get({ plain: true }));
+      const posts = [];
+      console.log(postData);
+      postData.forEach((post) => {
+        const postArray = Object.entries(post);
+        const filtered = postArray.filter(function (post) {
+          return post.achievement.game.game_title === req.params.game_title;
+        });
+        console.log(filtered);
+      });
       // const posts = postData.filter(function (post) {
       //   return post.achievement.game.game_title === req.params.game_title;
       // });
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      // const posts = dbPostData.map((post) => post.get({ plain: true }));
+
       res.render("search-result", {
         posts,
         loggedIn: req.session.loggedIn,
       });
     })
-    //   console.log(postData);
-    //   res.render("search-result", postData);
-    // })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
