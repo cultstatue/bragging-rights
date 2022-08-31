@@ -169,13 +169,34 @@ router.get("/:game_title", (req, res) => {
   })
     //create a promise that captures response from database call
     .then((dbPostData) => {
-      // console.log(dbPostData);
-      const posts = dbPostData.filter(function (post) {
-        return post.achievement.game.game_title === req.params.game_title;
+      if (!dbPostData) {
+        res.status(404).json({ message: "No posts found with this title" });
+        return;
+      }
+      console.log(req.params.game_title);
+      //serializing our data
+      // const postData = dbPostData.map((post) => post.get({ plain: true }));
+      // const posts = [];
+      // console.log(postData);
+      // postData.forEach((post) => {
+      //   post.filter(function (postdata) {
+      //     posts.push(
+      //       postdata.achievement.game.game_title === req.params.game_title
+      //     );
+      //   });
+      // });
+      // const posts = postData.filter(function (post) {
+      //   return post.achievement.game.game_title === req.params.game_title;
+      // });
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      res.render("search-result", {
+        posts,
+        loggedIn: req.session.loggedIn,
       });
-      console.log(posts);
-      res.render("search-result", posts);
     })
+    //   console.log(postData);
+    //   res.render("search-result", postData);
+    // })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
