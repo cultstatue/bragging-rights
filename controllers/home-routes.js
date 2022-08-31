@@ -122,4 +122,64 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+router.get("/:game_title", (req, res) => {
+  console.log("=================");
+  Post.findAll({
+    //Query Config
+    attributes: [
+      "id",
+      "title",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)"
+        ),
+        "like_count",
+      ],
+    ],
+    // this shows our posts in most recent order
+    order: [["created_at", "DESC"]],
+    //performing the JOIN with include
+    include: [
+      {
+        model: Image,
+        attributes: ["id", "img_url"],
+      },
+      {
+        model: Achievements,
+        attributes: ["id", "title"],
+        include: {
+          model: Game,
+          attributes: ["id", "game_title"],
+        },
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    //create a promise that captures response from database call
+    .then((dbPostData) => {
+      // console.log(dbPostData);
+      const posts = dbPostData.filter(function (post) {
+        return post.achievement.game.game_title === req.params.game_title;
+      });
+      console.log(posts);
+      res.render("search-result", posts);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;

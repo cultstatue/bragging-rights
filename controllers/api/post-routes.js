@@ -37,6 +37,10 @@ router.get("/", (req, res) => {
       {
         model: Achievements,
         attributes: ["id", "title"],
+        include: {
+          model: Game,
+          attributes: ["id", "game_title"],
+        },
       },
       {
         model: Comment,
@@ -171,14 +175,6 @@ router.put("/:id", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-// //Grab Posts with game
-// router.get('/:game_title'){
-//   Post.findOne({
-//     where:{
-
-//     }
-//   })
-// }
 
 //Delete a post
 router.delete("/:id", withAuth, (req, res) => {
