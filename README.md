@@ -2,10 +2,10 @@
 
 ## Contributors
 
-<h2> made by:
-<a href = "github.com/clairecashmore17">Claire Cashmore</a></h2>
-<a href = "github.com/cultstatue">Maddie Doutt</a></h2>
-<a href = "github.com/malickbax">Malick Ba</a></h2>
+<h2> made by:</h2>
+<a href = "github.com/clairecashmore17">Claire Cashmore</a>
+<a href = "github.com/cultstatue">Maddie Doutt</a>
+<a href = "github.com/malickbax">Malick Ba</a>
 
  
 ## Description
