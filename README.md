@@ -30,7 +30,7 @@
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/clairecashmore17/braggin-rights
+   git clone https://github.com/clairecashmore17/braggin-rights.git
    ```
 2. Install Dependencies
    ```sh
